@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Type Of Leave</th>
+                        <th>Total Days</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Reason</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="as : ${showreq}">
+                        <td th:text="${as.requester.name}"></td>
+                        <td th:text="${as.type.name}"></td>
+                        <td th:text="${as.total}"></td>
+                        <td th:text="${as.start}"></td>
+                        <td th:text="${as.end}"></td>
+                        <td th:text="${as.reason}"></td>
+                        <td>
+                            <form th:action="@{updatereq}" th:object="${request}" method="POST">
+                                <button>Y</button>
+                                <button>X</button>
+                            </form> 
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr> 
+                        <td>
+                            <form th:action="@{updatereq}" th:object="${request}" method="POST">
+                                <br><label>Leave ID</label>
+                                <br><input type="text" th:field="*{id}">
+<!--                                <br><label>Requester ID</label>
+                                <br><input type="text" th:field="*{requester}">
+                                <br><label>Type Leave</label>
+                                <br><input type="text" th:field="*{type}"/>-->
+                                <br><label>Current Status</label>
+                                <br><input type="text" th:field="*{currentStatus}"/>
+<!--                                <br><label>Days for leaving</label>
+                                <br><input type="text" th:field="*{total}">
+                                <br><label>Start Date</label>
+                                <br><input type="date" th:field="*{start}">
+                                <br><label>End Date</label>
+                                <br><input type="date" th:field="*{end}">
+                                <br><label>Reason for leaving</label>
+                                <br><input type="text" th:field="*{reason}"><br>-->
+                                <button id="button" value="updatereq" type="submit">Submit</button>
+                                <form/>
+                                <!--                    <button>Y</button>
+                                                    <button>X</button>
+                                                </form> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
